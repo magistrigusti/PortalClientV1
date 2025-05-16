@@ -1,9 +1,9 @@
-import { Input } from "../components/input"
+import { Input } from "../../components/input"
 import { useForm } from "react-hook-form"
 import { Button, Link } from "@nextui-org/react"
-import { useRegisterMutation } from "../app/services/userApi"
-import { ErrorMessage } from "../components/error-message"
-import { hasErrorField } from "../utils/has-error-field"
+import { useRegisterMutation } from "../../app/services/userApi"
+import { ErrorMessage } from "../../components/error-message"
+import { hasErrorField } from "../../utils/has-error-field"
 import { useState } from "react"
 
 type Register = {
