@@ -77,7 +77,7 @@ export const Register = ({ setSelected }:Props) => {
           className="cursor-pointer"
           onPress={() => setSelected("login")}
         >
-          Войдите
+          Зарегистрироваться
         </Link>
       </p>
       <div className="flex gap-2 justify-end">
