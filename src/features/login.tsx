@@ -4,6 +4,8 @@ import { Input } from '../components/input';
 import { Link, Button } from '@nextui-org/react';
 import { useLoginMutation, useLazyCurrentQuery,  } from '../app/services/userApi';
 import { useNavigate } from 'react-router-dom'; 
+import { ErrorMessage } from '../components/error-message';
+import { hasErrorField } from "../utils/has-error-field"
 
 type Login = {
   email: string;
@@ -34,8 +36,12 @@ export const Login: React.FC<Props> = ({ setSelected }) => {
   const onSubmit = async (data: Login) => {
     try {
       await login(data).unwrap();
-    } catch (error) {
-
+      await triggerCurrentQuery();
+      navigate("/")
+    } catch (err) {
+      if (hasErrorField(err)) {
+        setError(err.data.error)
+      }
     }
   }
 
@@ -58,6 +64,8 @@ export const Login: React.FC<Props> = ({ setSelected }) => {
         type="password"
         required="Обязательное поле"
       />
+
+      <ErrorMessage error={ error } />
 
       <p className="text-center text-small">
         Нет акkаунта{" "}
