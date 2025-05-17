@@ -10,6 +10,11 @@ import { User } from '../user';
 import { formatToClientDate } from '../../utils/format-to-client-date';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { Typography } from '../typography';
+import { MetaInfo } from '../meta-info';
+import { FcDislike } from 'react-icons/fc';
+import { MdOutlineFavoriteBorder } from 'react-icons/md';
+import { FaRegComment } from 'react-icons/fa';
+import { ErrorMessage } from '../error-message';
 
 type Props = {
   avatarUrl: string;
@@ -82,9 +87,21 @@ export const Card: React.FC<Props> = ({
         <CardFooter className="gap-3">
           <div className="flex gap-5 items-center">
             <div>
-
+              <MetaInfo 
+                count={likesCount}  
+                Icon={likedByUser ? FcDislike : MdOutlineFavoriteBorder}
+              />
             </div>
+
+            <Link to={`/posts/${id}`}>
+              <MetaInfo 
+                count={commentsCount} 
+                Icon={FaRegComment}
+              />
+            </Link>
           </div>
+
+          <ErrorMessage error={error} />
         </CardFooter>
       )}
     </NextUiCard>
