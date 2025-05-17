@@ -5,7 +5,7 @@ import { Container } from '../container';
 import { NavBar } from '../nav-bar';
 import { useSelector } from 'react-redux';
 import { selectIsAuthenticated, selectUser } from '../../features/user/userSlice';
-import { Profile } from '../profile/intex';
+import { Profile } from '../profile';
 
 export const Layout = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
