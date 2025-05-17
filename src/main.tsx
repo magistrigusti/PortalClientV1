@@ -4,7 +4,6 @@ import { Provider } from "react-redux"
 import { HeroUIProvider } from "@heroui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./components/theme-provider/index";
-import { App } from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import { Auth } from "./pages/auth";
@@ -14,6 +13,7 @@ import { CurrentPost } from './pages/current-post';
 import { UserProfile } from './pages/user-profile';
 import { Followers } from './pages/followers';
 import { Following } from './pages/following';
+import { AuthGuard } from './features/user/authGuard';
 
 const container = document.getElementById("root");
 const router = createBrowserRouter([
@@ -57,7 +57,9 @@ if (container) {
       <Provider store={store}>
         <HeroUIProvider>
           <ThemeProvider>
-            <RouterProvider router={ router } />
+            <AuthGuard>
+              <RouterProvider router={ router } />
+            </AuthGuard>
           </ThemeProvider>
         </HeroUIProvider>
       </Provider>
