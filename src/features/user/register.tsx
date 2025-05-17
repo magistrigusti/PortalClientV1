@@ -36,8 +36,8 @@ export const Register = ({ setSelected }:Props) => {
 
   const onSubmit = async (data: Register) => {
     try {
-      await register(data).unwrap();
-      setSelected("login");
+      await register(data).unwrap()
+      setSelected("login")
     } catch (err) {
       if (hasErrorField(err)) {
         setError(err.data.error)
@@ -47,6 +47,7 @@ export const Register = ({ setSelected }:Props) => {
 
   return (
     <form className="flex flex-col gap-4"
+      onSubmit={handleSubmit(onSubmit)}
     >
       <Input required="Обязательное поле"
         control={control}

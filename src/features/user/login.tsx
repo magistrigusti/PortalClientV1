@@ -17,26 +17,28 @@ type Props = {
 }
 
 export const Login: React.FC<Props> = ({ setSelected }) => {
-  const {
-    handleSubmit, control, formState: { errors }
+    const {
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm<Login>({
-    mode: 'onChange',
-    reValidateMode: 'onBlur',
+    mode: "onChange",
+    reValidateMode: "onBlur",
     defaultValues: {
-      email: '',
-      password: ''
-    }
-  });
+      email: "",
+      password: "",
+    },
+  })
 
-  const [login, { isLoading }] = useLoginMutation();
-  const navigate = useNavigate();
-  const [ error, setError ] = useState('');
-  const [ triggerCurrentQuery ] = useLazyCurrentQuery();
+  const [login, { isLoading }] = useLoginMutation()
+  const navigate = useNavigate()
+  const [error, setError] = useState("")
+  const [triggerCurrentQuery] = useLazyCurrentQuery()
 
   const onSubmit = async (data: Login) => {
     try {
-      await login(data).unwrap();
-      await triggerCurrentQuery();
+      await login(data).unwrap()
+      await triggerCurrentQuery()
       navigate("/")
     } catch (err) {
       if (hasErrorField(err)) {
