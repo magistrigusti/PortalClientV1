@@ -15,7 +15,7 @@ export const CreateComment = () => {
     handleSubmit, control, formState: { errors }, setValue
   } = useForm();
 
-  const onSubmit =handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async (data) => {
     try {
       if (id) {
         await createComment({ content: data.comment, postId: id }).unwrap();

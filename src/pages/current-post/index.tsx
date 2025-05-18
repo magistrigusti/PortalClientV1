@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useGetPostByIdQuery } from '../../app/services/postsApi';
 import { Card } from '../../components/card';
 import { GoBack } from '../../components/go-back';
+import { CreateComment } from '../../components/create-comment';
 
 export const CurrentPost = () => {
   const params = useParams<{id: string}>();
@@ -30,6 +31,10 @@ export const CurrentPost = () => {
         likedByUser={likedByUser}
         createdAt={createdAt}
       />
+
+      <div className="mt-10">
+        <CreateComment />
+      </div>
 
       <div className="mt-10">
         {data.comments ?
