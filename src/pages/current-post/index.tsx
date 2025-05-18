@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetPostByIdQuery } from '../../app/services/postsApi';
 import { Card } from '../../components/card';
+import { GoBack } from '../../components/go-back';
 
 export const CurrentPost = () => {
   const params = useParams<{id: string}>();
@@ -16,6 +17,8 @@ export const CurrentPost = () => {
 
   return (
     <>
+      <GoBack />
+      
       <Card cardFor="current-post"
         avatarUrl={author.avatarUrl ?? ''}
         content={content}
@@ -27,6 +30,22 @@ export const CurrentPost = () => {
         likedByUser={likedByUser}
         createdAt={createdAt}
       />
+
+      <div className="mt-10">
+        {data.comments ?
+          data.comments.map((comment) => (
+            <Card key={comment.id}
+              cardFor="comment"
+              avatarUrl={comment.user.avatarUrl ?? ''}
+              content={comment.content}
+              name={comment.user.name ?? ''}
+              authorId={comment.userId}
+              commentId={comment.id}
+              id={id}
+            />
+          )) : null
+        }
+      </div>
     </>
   )
 }
