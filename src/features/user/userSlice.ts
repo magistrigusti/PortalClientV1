@@ -27,16 +27,15 @@ const slice = createSlice({
       state.user = null
     },
   },
-
   extraReducers: (builder) => {
     builder
       .addMatcher(userApi.endpoints.login.matchFulfilled, (state, action) => {
-        state.token = action.payload.token;
-        state.isAuthenticated = true;
+        state.token = action.payload.token
+        state.isAuthenticated = true
       })
       .addMatcher(userApi.endpoints.current.matchFulfilled, (state, action) => {
-        state.isAuthenticated = true;
-        state.current = action.payload;
+        state.isAuthenticated = true
+        state.current = action.payload
       })
       .addMatcher(
         userApi.endpoints.getUserById.matchFulfilled,
@@ -47,9 +46,14 @@ const slice = createSlice({
   },
 })
 
-export const { logout, resetUser } = slice.actions;
-export default slice.reducer;
+export const { logout, resetUser } = slice.actions
+export default slice.reducer
 
-export const selectCurrent = (state: RootState) => state.auth.current;
-export const selectUsers = (state: RootState) => state.auth.users;
-export const selectUser = (state: RootState) => state.auth.user;
+export const selectIsAuthenticated = (state: RootState) =>
+  state.auth.isAuthenticated
+
+export const selectCurrent = (state: RootState) => state.auth.current
+
+export const selectUsers = (state: RootState) => state.auth.users
+
+export const selectUser = (state: RootState) => state.auth.user
