@@ -1,24 +1,17 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import {
-  useGetUserByIdQuery,
-  useLazyCurrentQuery,
-  useLazyGetUserByIdQuery,
-} from "../../app/services/userApi"
+import {useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery,} from "../../app/services/userApi"
 import { useDispatch, useSelector } from "react-redux"
 import { resetUser, selectCurrent } from "../../features/user/userSlice"
 import { Button, Card, Image } from "@nextui-org/react"
 import { MdOutlinePersonAddAlt1 } from "react-icons/md"
 import { MdOutlinePersonAddDisabled } from "react-icons/md"
 import { useDisclosure } from "@nextui-org/react"
-import {
-  useFollowUserMutation,
-  useUnfollowUserMutation,
-} from "../../app/services/followApi"
+import {useFollowUserMutation, useUnfollowUserMutation } from "../../app/services/followApi"
 import { GoBack } from "../../components/go-back"
 import { BASE_URL } from "../../constants"
 import { CiEdit } from "react-icons/ci"
-import { EditProfile } from "../../components/edit-profile"
+// import { EditProfile } from "../../components/edit-profile"
 import { formatToClientDate } from "../../utils/format-to-client-date"
 import { ProfileInfo } from "../../components/profile-info"
 import { CountInfo } from "../../components/count-info"
@@ -56,17 +49,17 @@ export const UserProfile = () => {
     }
   }
 
-  const handleClose = async () => {
-    try {
-      if (id) {
-        await triggerGetUserByIdQuery(id)
-        await triggerCurrentQuery()
-        onClose()
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const handleClose = async () => {
+  //   try {
+  //     if (id) {
+  //       await triggerGetUserByIdQuery(id)
+  //       await triggerCurrentQuery()
+  //       onClose()
+  //     }
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   if (!data) {
     return null
@@ -91,7 +84,7 @@ export const UserProfile = () => {
                 color={data?.isFollowing ? "default" : "primary"}
                 variant="flat"
                 className="gap-2"
-                onClick={handleFollow}
+                onPress={handleFollow}
                 endContent={
                   data?.isFollowing ? (
                     <MdOutlinePersonAddDisabled />
@@ -105,7 +98,7 @@ export const UserProfile = () => {
             ) : (
               <Button
                 endContent={<CiEdit />}
-                onClick={() => onOpen()}
+                onPress={() => onOpen()}
               >
                 Редактировать
               </Button>
@@ -115,7 +108,11 @@ export const UserProfile = () => {
         <Card className="flex flex-col space-y-4 p-5 flex-1">
           <ProfileInfo title="Почта:" info={data.email} />
           <ProfileInfo title="Местоположение:" info={data.location} />
-          <ProfileInfo title="Дата рождения:" info={formatToClientDate(data.dateOfBirth)} />
+          <ProfileInfo 
+            title="Дата рождения:" 
+            info={data.dateOfBirth ? formatToClientDate(data.dateOfBirth) : "Не указано"} 
+          />
+
           <ProfileInfo title="Обо мне:" info={data.bio} />
           
           <div className="flex gap-2">
@@ -124,7 +121,7 @@ export const UserProfile = () => {
           </div>
         </Card>
       </div>
-      <EditProfile isOpen={isOpen} onClose={handleClose} user={data} />
+      {/* <EditProfile isOpen={isOpen} onClose={handleClose} user={data} /> */}
     </>
   )
 }

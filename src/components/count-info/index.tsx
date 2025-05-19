@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 type Props = {
   count: number;
@@ -6,11 +6,13 @@ type Props = {
 }
 
 export const CountInfo: React.FC<Props> = ({
-  count, title
+  count,
+  title,
 }) => {
   return (
     <div className="flex flex-col items-center space-x-2 p-4">
-      <span className="text-4xl font-semibold">{ count }</span>{ title }
+      <span className="text-4xl font-semibold">{count}</span>
+      <span>{title}</span>
     </div>
   )
 }
