@@ -11,7 +11,7 @@ import {useFollowUserMutation, useUnfollowUserMutation } from "../../app/service
 import { GoBack } from "../../components/go-back"
 import { BASE_URL } from "../../constants"
 import { CiEdit } from "react-icons/ci"
-// import { EditProfile } from "../../components/edit-profile"
+import { EditProfile } from "../../components/edit-profile"
 import { formatToClientDate } from "../../utils/format-to-client-date"
 import { ProfileInfo } from "../../components/profile-info"
 import { CountInfo } from "../../components/count-info"
@@ -49,17 +49,17 @@ export const UserProfile = () => {
     }
   }
 
-  // const handleClose = async () => {
-  //   try {
-  //     if (id) {
-  //       await triggerGetUserByIdQuery(id)
-  //       await triggerCurrentQuery()
-  //       onClose()
-  //     }
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const handleClose = async () => {
+    try {
+      if (id) {
+        await triggerGetUserByIdQuery(id)
+        await triggerCurrentQuery()
+        onClose()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   if (!data) {
     return null
@@ -121,7 +121,7 @@ export const UserProfile = () => {
           </div>
         </Card>
       </div>
-      {/* <EditProfile isOpen={isOpen} onClose={handleClose} user={data} /> */}
+      <EditProfile isOpen={isOpen} onClose={handleClose} user={data} />
     </>
   )
 }

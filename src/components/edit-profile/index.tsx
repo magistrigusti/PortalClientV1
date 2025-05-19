@@ -1,11 +1,5 @@
 import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Textarea,
+  Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea,
 } from "@nextui-org/react"
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "../theme-provider"
