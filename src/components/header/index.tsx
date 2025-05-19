@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsAuthenticated, logout } from '../../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { CiLogout } from 'react-icons/ci';
+import portalLogo from '../../img/portal-logo.png';
+
 
 export const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -23,10 +25,12 @@ export const Header = () => {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">
-          Portal Social Network
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <img src={portalLogo} alt="logo" width={48} height={48} />
+          <p className="font-bold text-inherit">Portal Network</p>
+        </div>
       </NavbarBrand>
+
 
       <NavbarContent justify="end">
         <NavbarItem className="lg:flex text-3xl cursor-pointer"
@@ -42,9 +46,9 @@ export const Header = () => {
               variant="flat"
               onPress={handleLogout}
             >
-              <CiLogout/> <span>Выйти</span>
+              <CiLogout /> <span>Выйти</span>
             </Button>
-          ) }
+          )}
         </NavbarItem>
       </NavbarContent>
     </Navbar>
