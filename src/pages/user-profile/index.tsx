@@ -75,10 +75,8 @@ export const UserProfile = () => {
   return (
     <>
       <GoBack />
-      <div className="flex flex-col lg:flex-row items-stretch gap-4">
-
-        <Card className="flex flex-col items-center text-center space-y-4 p-5 w-full lg:w-1/3">
-
+      <div className="flex items-stretch gap-4">
+        <Card className="flex flex-col items-center text-center space-y-4 p-5 flex-2">
           <Image
             src={`${BASE_URL}${data.avatarUrl}`}
             alt={data.name}
@@ -114,8 +112,7 @@ export const UserProfile = () => {
             )}
           </div>
         </Card>
-        <Card className="flex flex-col space-y-4 p-5 w-full lg:w-2/3">
-
+        <Card className="flex flex-col space-y-4 p-5 flex-1">
           <ProfileInfo title="Почта:" info={data.email} />
           <ProfileInfo title="Местоположение:" info={data.location} />
           <ProfileInfo title="Дата рождения:" info={formatToClientDate(data.dateOfBirth)} />

@@ -7,7 +7,7 @@ export const Posts = () => {
 
   return (
     <>
-      <div className="md-10 w-full">
+      <div className="md-10 p-5 w-full">
         <CreatePost />
       </div>
 

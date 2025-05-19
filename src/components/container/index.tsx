@@ -6,7 +6,7 @@ type Props = {
 
 export const Container: React.FC<Props> = ({ children }) => {
   return (
-    <div className='flex max-w-screen-xl mx-auto mt-10'> 
+    <div className="flex flex-wrap max-w-screen-xl mx-auto mt-10 overflow-x-hidden">
       {children}
     </div>
   )

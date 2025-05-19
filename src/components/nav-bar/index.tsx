@@ -5,7 +5,7 @@ import { FaUsers } from 'react-icons/fa';
 
 export const NavBar = () => {
   return (
-    <nav>
+    <nav className="relative z-10">
       <ul className="flex flex-col gap-5">
         <li>
           <NavButton href="/" icon={<BsPostcard />}>
@@ -23,7 +23,6 @@ export const NavBar = () => {
           </NavButton>
         </li>
       </ul>
-
     </nav>
   )
 }

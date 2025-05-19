@@ -27,15 +27,17 @@ export const Layout = () => {
           <NavBar />
         </div>
 
-        <div className="flex-1 p-4">
-          <Outlet />
-        </div>
-
         <div className="flex-2 p-4">
           <div className="flex-col flex gap-5">
             {!user && <Profile />}
           </div>
         </div>
+
+        <div className="flex-1 p-4">
+          <Outlet />
+        </div>
+
+        
       </Container>
     </>
   )
