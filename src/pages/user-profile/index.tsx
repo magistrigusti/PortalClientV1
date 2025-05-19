@@ -1,13 +1,20 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import {useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery,} from "../../app/services/userApi"
+import {
+  useGetUserByIdQuery,
+  useLazyCurrentQuery,
+  useLazyGetUserByIdQuery,
+} from "../../app/services/userApi"
 import { useDispatch, useSelector } from "react-redux"
 import { resetUser, selectCurrent } from "../../features/user/userSlice"
 import { Button, Card, Image } from "@nextui-org/react"
 import { MdOutlinePersonAddAlt1 } from "react-icons/md"
 import { MdOutlinePersonAddDisabled } from "react-icons/md"
 import { useDisclosure } from "@nextui-org/react"
-import {useFollowUserMutation, useUnfollowUserMutation } from "../../app/services/followApi"
+import {
+  useFollowUserMutation,
+  useUnfollowUserMutation,
+} from "../../app/services/followApi"
 import { GoBack } from "../../components/go-back"
 import { BASE_URL } from "../../constants"
 import { CiEdit } from "react-icons/ci"
@@ -68,8 +75,10 @@ export const UserProfile = () => {
   return (
     <>
       <GoBack />
-      <div className="flex items-stretch gap-4">
-        <Card className="flex flex-col items-center text-center space-y-4 p-5 flex-2">
+      <div className="flex flex-col lg:flex-row items-stretch gap-4">
+
+        <Card className="flex flex-col items-center text-center space-y-4 p-5 w-full lg:w-1/3">
+
           <Image
             src={`${BASE_URL}${data.avatarUrl}`}
             alt={data.name}
@@ -105,14 +114,11 @@ export const UserProfile = () => {
             )}
           </div>
         </Card>
-        <Card className="flex flex-col space-y-4 p-5 flex-1">
+        <Card className="flex flex-col space-y-4 p-5 w-full lg:w-2/3">
+
           <ProfileInfo title="Почта:" info={data.email} />
           <ProfileInfo title="Местоположение:" info={data.location} />
-          <ProfileInfo 
-            title="Дата рождения:" 
-            info={data.dateOfBirth ? formatToClientDate(data.dateOfBirth) : "Не указано"} 
-          />
-
+          <ProfileInfo title="Дата рождения:" info={formatToClientDate(data.dateOfBirth)} />
           <ProfileInfo title="Обо мне:" info={data.bio} />
           
           <div className="flex gap-2">

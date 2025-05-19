@@ -77,6 +77,7 @@ export const Card = ({
         : await likePost({ postId: id }).unwrap()
 
       await refetchPosts()
+
     } catch (err) {
       if (hasErrorField(err)) {
         setError(err.data.error)
